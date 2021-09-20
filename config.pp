@@ -1,3 +1,3 @@
 class { "rundeck":
-    grails_server_url => "http://104.197.9.164"
+    grails_server_url => sprintf("http://%s", $facts["gce"]["instance"]["networkInterfaces"][0]["accessConfigs"][0]["externalIp"])
 }
