@@ -5,7 +5,12 @@ sudo apt install puppetserver git -y;
 sudo systemctl start puppetserver; 
 sudo apt install puppet-agent -y; 
 sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; 
-puppet module install computology-packagecloud --version 0.3.2; 
+
+sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java;
+sudo /opt/puppetlabs/bin/puppet module install puppet-rundeck;
+sudo /opt/puppetlabs/bin/puppet module install crayfishx-firewalld;
+sudo /opt/puppetlabs/bin/puppet module install puppetlabs/apt;
+
 git clone https://github.com/nkalupahana/rundeck.git; 
 cd rundeck;
 sudo /opt/puppetlabs/bin/puppet apply config.pp

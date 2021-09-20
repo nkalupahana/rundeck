@@ -1,5 +1,12 @@
-include packagecloud
+include java
+include rundeck
+include firewalld
 
-packagecloud::repo { "pagerduty/rundeck":
-    type => "deb"
+firewalld_port { 'Rundeck HTTP port':
+  ensure   => present,
+  zone     => 'public',
+  port     => 4440,
+  protocol => 'tcp',
 }
+
+Class['java'] -> Class['rundeck']
