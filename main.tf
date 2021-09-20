@@ -25,6 +25,8 @@ resource "google_compute_instance" "vm" {
         network = google_compute_network.vpc.self_link
         access_config { }
     }
+
+    metadata_startup_script = file("${path.module}/setup-puppet.sh")
 }
 
 # Allow HTTP & HTTPS
