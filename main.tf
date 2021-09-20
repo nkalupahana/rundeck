@@ -26,18 +26,7 @@ resource "google_compute_instance" "vm" {
         access_config { }
     }
 
-    provisioner "file" {
-        source      = "config.pp"
-        destination = "/tmp/config.pp"
-    }
-
-    provisioner "remote-exec" {
-        inline = [
-            "sudo apt install puppetserver -y",
-            "systemctl start puppetserver",
-            "cd /tmp; puppet apply"
-        ]
-    }
+    metadata_startup_script = "sudo apt install puppetserver; systemctl start puppetserver; sudo apt install puppet-agent; sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; git clone https://github.com/nkalupahana/rundeck.git; cd rundeck; puppet apply"
 }
 
 # Allow HTTP & HTTPS
