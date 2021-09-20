@@ -17,7 +17,7 @@ resource "google_compute_instance" "vm" {
 
     boot_disk {
         initialize_params {
-            image = "debian-8-jessie-v20180611"
+            image = "ubuntu-1604-xenial-v20210429"
         }
     }
 
@@ -25,8 +25,6 @@ resource "google_compute_instance" "vm" {
         network = google_compute_network.vpc.self_link
         access_config { }
     }
-
-    metadata_startup_script = file("${path.module}/setup-puppet.sh")
 }
 
 # Allow HTTP & HTTPS

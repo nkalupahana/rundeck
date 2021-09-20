@@ -1,5 +1,5 @@
-wget https://apt.puppet.com/puppet6-release-jessie.deb; 
-sudo dpkg -i puppet6-release-jessie.deb; 
+wget https://apt.puppet.com/puppet7-release-xenial.deb; 
+sudo dpkg -i puppet7-release-xenial.deb; 
 sudo apt update;
 sudo apt install puppetserver git -y --force-yes; 
 sudo systemctl start puppetserver; 
