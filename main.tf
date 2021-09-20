@@ -49,3 +49,13 @@ resource "google_compute_firewall" "allow-https" {
   }
   target_tags = ["https"]
 }
+
+resource "google_compute_firewall" "allow-ingress_from_iap" {
+  name = "${var.app_name}-fw-allow-iap-ingress"
+  network = "${google_compute_network.vpc.name}"
+  source_ranges = ["35.235.240.0/20"]
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "3389"]
+  }
+}
