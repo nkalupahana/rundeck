@@ -13,7 +13,7 @@ resource "google_compute_network" "vpc" {
 # Create VM (with VPC)
 resource "google_compute_instance" "vm" {
     name         = var.app_name
-    machine_type = "e2-micro"
+    machine_type = "e2-medium"
 
     boot_disk {
         initialize_params {
@@ -26,7 +26,7 @@ resource "google_compute_instance" "vm" {
         access_config { }
     }
 
-    metadata_startup_script = "sudo apt install puppetserver; systemctl start puppetserver; sudo apt install puppet-agent; sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; git clone https://github.com/nkalupahana/rundeck.git; cd rundeck; puppet apply"
+    metadata_startup_script = "wget https://apt.puppet.com/puppet7-release-stretch.deb; sudo dpkg -i puppet7-release-stretch.deb; sudo apt update; sudo apt install puppetserver -y; sudo systemctl start puppetserver; sudo apt install puppet-agent -y; sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; git clone https://github.com/nkalupahana/rundeck.git; cd rundeck; puppet apply"
 }
 
 # Allow HTTP & HTTPS
