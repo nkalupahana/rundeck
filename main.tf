@@ -17,7 +17,7 @@ resource "google_compute_instance" "vm" {
 
     boot_disk {
         initialize_params {
-            image = "debian-cloud/debian-8"
+            image = "debian-8-jessie-v20180611"
         }
     }
 
