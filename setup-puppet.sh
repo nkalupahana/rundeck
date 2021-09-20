@@ -9,7 +9,6 @@ wget -O rundeck.tar.gz "https://firebasestorage.googleapis.com/v0/b/nisa-la.apps
 
 sudo /opt/puppetlabs/bin/puppet module install ./rundeck.tar.gz;
 sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java;
-sudo /opt/puppetlabs/bin/puppet module install crayfishx-firewalld;
 sudo /opt/puppetlabs/bin/puppet module install puppetlabs/apt;
 
 git clone https://github.com/nkalupahana/rundeck.git; 
