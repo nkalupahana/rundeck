@@ -6,8 +6,8 @@ sudo systemctl start puppetserver;
 sudo apt install puppet-agent -y; 
 sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; 
 
-sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java;
 sudo /opt/puppetlabs/bin/puppet module install puppet-rundeck;
+sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java;
 sudo /opt/puppetlabs/bin/puppet module install crayfishx-firewalld;
 sudo /opt/puppetlabs/bin/puppet module install puppetlabs/apt;
 
