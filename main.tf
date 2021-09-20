@@ -17,7 +17,7 @@ resource "google_compute_instance" "vm" {
 
     boot_disk {
         initialize_params {
-            image = "debian-cloud/debian-10"
+            image = "debian-cloud/debian-9"
         }
     }
 
@@ -26,9 +26,16 @@ resource "google_compute_instance" "vm" {
         access_config { }
     }
 
+    provisioner "file" {
+        source      = "config.pp"
+        destination = "/tmp/config.pp"
+    }
+
     provisioner "remote-exec" {
         inline = [
-            "sudo apt install puppet -y"
+            "sudo apt install puppetserver -y",
+            "systemctl start puppetserver",
+            "cd /tmp; puppet apply"
         ]
     }
 }
