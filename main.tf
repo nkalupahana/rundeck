@@ -26,6 +26,8 @@ resource "google_compute_instance" "vm" {
         access_config { }
     }
 
+    allow_stopping_for_update = true
+
     metadata_startup_script = file("${path.module}/setup-puppet.sh")
 }
 
