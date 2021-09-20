@@ -31,7 +31,7 @@ resource "google_compute_instance" "vm" {
 
 # Allow HTTP & HTTPS
 resource "google_compute_firewall" "allow-rundeck-http" {
-    name = "${var.app_name}-fw-allow-http"
+    name = "${var.app_name}-allow-rundeck"
     network = "${google_compute_network.vpc.name}"
     allow {
         protocol = "tcp"
