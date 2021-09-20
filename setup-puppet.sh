@@ -1,9 +1,9 @@
-wget https://apt.puppet.com/puppet7-release-stretch.deb; 
-sudo dpkg -i puppet7-release-stretch.deb; 
-sudo apt update; 
-sudo apt install puppetserver git -y; 
+wget https://apt.puppet.com/puppet6-release-jessie.deb; 
+sudo dpkg -i puppet6-release-jessie.deb; 
+sudo apt update;
+sudo apt install puppetserver git -y --force-yes; 
 sudo systemctl start puppetserver; 
-sudo apt install puppet-agent -y; 
+sudo apt install puppet-agent -y --force-yes; 
 sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true; 
 
 sudo /opt/puppetlabs/bin/puppet module install puppet-rundeck;
