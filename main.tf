@@ -13,7 +13,7 @@ resource "google_compute_network" "vpc" {
 # Create VM (with VPC)
 resource "google_compute_instance" "vm" {
     name         = var.app_name
-    machine_type = "e2-micro"
+    machine_type = "e2-small"
 
     boot_disk {
         initialize_params {
